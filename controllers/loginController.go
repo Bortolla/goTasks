@@ -8,9 +8,9 @@ import (
 	// "golang/data"
 )
 
-func GetUserController(w http.ResponseWriter, r *http.Request) {
+func LoginController(w http.ResponseWriter, r *http.Request) {
 	// Pegar do corpo da requisição: 
-	// 
+	// Nome e senha do usuário
 
 	database.ConnectDb("GetUser")
 	fmt.Printf("got /hello request\n")

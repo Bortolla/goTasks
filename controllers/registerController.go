@@ -8,11 +8,12 @@ import (
 	// "golang/data"
 )
 
-func GetUserController(w http.ResponseWriter, r *http.Request) {
+//  nao implementado
+func RegisterController(w http.ResponseWriter, r *http.Request) {
 	// Pegar do corpo da requisição: 
-	// 
+	// Nome e senha do usuario
 
-	database.ConnectDb("GetUser")
+	database.ConnectDb("RegisterUser") // ? 
 	fmt.Printf("got /hello request\n")
 	io.WriteString(w, "Hello, HTTP!\n")
 }

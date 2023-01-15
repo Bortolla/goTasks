@@ -15,6 +15,14 @@ func main() {
 
 	// http.HandleFunc("/", controllers.GetRoot)
 
+	http.HandleFunc("/deleteTask", controllers.DeleteTaskController)
+
+	http.HandleFunc("/getTasks", controllers.RegisterController)
+
+	http.HandleFunc("/cadastro", controllers.RegisterController)
+
+	http.HandleFunc("/login", controllers.LoginController)
+
 	http.HandleFunc("/user", controllers.GetUserController)
 
 	err := http.ListenAndServe(":3333", nil)

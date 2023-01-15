@@ -8,9 +8,10 @@ import (
 	// "golang/data"
 )
 
-func GetUserController(w http.ResponseWriter, r *http.Request) {
+func DeleteTaskController(w http.ResponseWriter, r *http.Request) {
 	// Pegar do corpo da requisição: 
-	// 
+	// Nome e senha do usuário
+	// e nome da tarefa
 
 	database.ConnectDb("GetUser")
 	fmt.Printf("got /hello request\n")
