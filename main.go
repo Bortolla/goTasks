@@ -17,7 +17,7 @@ func main() {
 
 	http.HandleFunc("/deleteTask", controllers.DeleteTaskController)
 
-	http.HandleFunc("/getTasks", controllers.RegisterController)
+	http.HandleFunc("/getTasks", controllers.getTasksController)
 
 	http.HandleFunc("/cadastro", controllers.RegisterController)
 
