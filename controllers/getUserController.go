@@ -9,7 +9,7 @@ import (
 )
 
 func GetUserController(w http.ResponseWriter, r *http.Request) {
-	database.ConnectDb()
+	database.ConnectDb("GetUser")
 	fmt.Printf("got /hello request\n")
 	io.WriteString(w, "Hello, HTTP!\n")
 }

@@ -6,13 +6,13 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type Tag struct {
+type User struct {
 	ID   int    `json:"id"`
 	Nome string `json:"nome"`
 	Senha string `json:"senha"`
 }
 
-func ConnectDb() {
+func ConnectDb(query string) {
 
 	DB, err := sql.Open("mysql", "root:@/golang")
 	if err != nil {
@@ -20,20 +20,23 @@ func ConnectDb() {
 	} else {
 		fmt.Println("Banco de dados conectado com sucesso.")
 
+		if (query == "GetUser") {
 			results, err := DB.Query("SELECT id, nome, senha FROM users")
 			if err != nil {
-			    panic(err.Error()) 
+					panic(err.Error()) 
 			}
 
 			for results.Next() {
-			    var tag Tag
-			    err = results.Scan(&tag.ID, &tag.Nome, &tag.Senha)
-			    if err != nil {
-			        panic(err.Error()) 
-			    }
-					fmt.Println(tag.ID) 
-					fmt.Println(tag.Nome)
-					fmt.Println(tag.Senha)
+					var user User
+					err = results.Scan(&user.ID, &user.Nome, &user.Senha)
+					if err != nil {
+							panic(err.Error()) 
+					}
+					fmt.Println(user.ID) 
+					fmt.Println(user.Nome)
+					fmt.Println(user.Senha)
 			}		
+		}
+		
 	}
 }

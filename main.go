@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"os"
 	"golang/controllers"
-	"golang/database"
+	// "golang/database"
 )
 
 func main() {
 
-	database.ConnectDb()
+	// database.ConnectDb()
 
-	http.HandleFunc("/", controllers.GetRoot)
+	// http.HandleFunc("/", controllers.GetRoot)
 
 	http.HandleFunc("/user", controllers.GetUserController)
 
