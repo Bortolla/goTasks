@@ -14,6 +14,7 @@ type User struct {
 
 func ConnectDb(query string) {
 
+	// "mysql", "usuario:senha@/nomeBancoDeDados"
 	DB, err := sql.Open("mysql", "root:@/golang")
 	if err != nil {
 		panic(err)
@@ -37,6 +38,6 @@ func ConnectDb(query string) {
 					fmt.Println(user.Senha)
 			}		
 		}
-		
+
 	}
 }
