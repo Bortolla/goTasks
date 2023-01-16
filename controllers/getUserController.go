@@ -9,15 +9,10 @@ import (
 	// "golang/data"
 )
 
-type Person struct {
-	Nome string
-	Senha  string
-}
-
+// Nao implementado ainda
+// Pegar um usuario baseado no seu nome e senha
 func GetUserController(w http.ResponseWriter, r *http.Request) {
-	// Pegar do corpo da requisição: 
-	// 
-
+ 
 	if r.Method != "POST" {
 		http.Error(w, "Método não suportado.", http.StatusNotFound)
     return
@@ -36,7 +31,9 @@ func GetUserController(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintf(w, "Person: %+v", p.Nome)
 	// fmt.Fprintf(w, "Person: %+v", p)
 
-	database.ConnectDb("GetUser")
+
+
+	database.ConnectDb("GetUser", "vitor", "123")
 	fmt.Printf("got /hello request\n")
 	io.WriteString(w, "Hello, HTTP!\n")
 }

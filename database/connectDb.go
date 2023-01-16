@@ -12,7 +12,7 @@ type User struct {
 	Senha string `json:"senha"`
 }
 
-func ConnectDb(query string) {
+func ConnectDb(operation string, nome string, senha string) (string) {
 
 	// "mysql", "usuario:senha@/nomeBancoDeDados"
 	DB, err := sql.Open("mysql", "root:@/golang")
@@ -20,8 +20,8 @@ func ConnectDb(query string) {
 		panic(err)
 	} else {
 		fmt.Println("Banco de dados conectado com sucesso.")
-
-		if (query == "GetUser") {
+		
+		if (operation == "GetUser") {
 			results, err := DB.Query("SELECT id, nome, senha FROM users")
 			if err != nil {
 					panic(err.Error()) 
@@ -38,6 +38,8 @@ func ConnectDb(query string) {
 					fmt.Println(user.Senha)
 			}		
 		}
+	
+	return "fim"
 
 	}
 }

@@ -19,7 +19,7 @@ func main() {
 
 	http.HandleFunc("/getTasks", controllers.GetTasksController)
 
-	http.HandleFunc("/cadastro", controllers.RegisterController)
+	http.HandleFunc("/register", controllers.RegisterController)
 
 	http.HandleFunc("/login", controllers.LoginController)
 
