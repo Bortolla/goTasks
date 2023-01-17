@@ -30,7 +30,7 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-  if len(p.Nome) <= 0 || len(p.Senha) <= 0 {
+  if len(p.Nome) <= 0 && len(p.Senha) <= 0 {
 		// Adicionar JSON com mensagem
 		w.WriteHeader(400)
 		io.WriteString(w, "Nome e/ou Senha mt curtos")
