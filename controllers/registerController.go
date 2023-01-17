@@ -5,7 +5,6 @@ import (
 	// "io"
 	"encoding/json"
 	"net/http"
-	// "golang/database"
 	"golang/data"
 	"golang/utils"
 )

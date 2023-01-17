@@ -13,7 +13,7 @@ type Tag struct {
 	Senha   string    `json:"senha"`
 }
 
-func RegisterData(nome, senha string) {
+func RegisterData(nome, senha string)  {
 	db, err := sql.Open("mysql", "root:@/golang")
 
 	if err != nil {
