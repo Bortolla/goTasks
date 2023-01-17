@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	// "fmt"
-	"io"
+	"fmt"
+	// "io"
 	"encoding/json"
 	"net/http"
 	// "golang/database"
@@ -11,7 +11,6 @@ import (
 )
 
 type Person struct {
-	// ID int
 	Nome string
 	Senha  string
 }
@@ -30,30 +29,24 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-  if len(p.Nome) <= 0 && len(p.Senha) <= 0 {
+  if len(p.Nome) == 0 || len(p.Senha) == 0 {
 		// Adicionar JSON com mensagem
-		w.WriteHeader(400)
-		io.WriteString(w, "Nome e/ou Senha mt curtos")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(401)
+		// jsonData := []byte(`{"msg":"erro", "status": "401"}`)
+		json.NewEncoder(w).Encode(map[string]any{
+			"msg": "erro",
+			"status": "401",
+		})
 		return
-	} 
-
-	// fmt.Println(p.Nome, p.Senha)
-	// fmt.Println(utils.FindUser(p.Nome, p.Senha))
-
-	if utils.FindUser(p.Nome, p.Senha) == false {
-		data.RegisterData(p.Nome, p.Senha)
 	} else {
-		return
+
+		if utils.FindUser(p.Nome, p.Senha) == false {
+			data.RegisterData(p.Nome, p.Senha)
+			fmt.Println("usuario cadastrado")
+		} else {
+			fmt.Println("usuario já cadastrado")
+			return
+		}
 	}
-
-	io.WriteString(w, "prosseguir com o cadastro")
-
-
-	// w.WriteHeader(200)
-	// fmt.Fprintf(w, "Person: %+v", p.Nome)
-	// fmt.Fprintf(w, "Person: %+v", p)
-
-	// database.ConnectDb("RegisterUser") // ? 
-	// fmt.Printf("got /user request\n")
-	// io.WriteString(w, "Hello, user!\n")
 }
