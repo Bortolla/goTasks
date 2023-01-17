@@ -42,44 +42,9 @@ func FindUser(nome, senha string) (bool) {
 			} else {
 				return false
 			}
-
 		}
 		
 	}
 
-	return false
-	
-
-	// Fazendo a query 
-	// var sql string = fmt.Sprintf("SELECT * FROM `users` WHERE nome = '%s' AND senha = '%s'", nome, senha)
-
-	// row := db.Query(sql)
-
-  // // if row != nil {
-	// // 	// if row != sql.ErrNoRows {
-  // //   // 	panic(err.Error())
-	// // 	// }
-	// // 	return false
-  // // }
-
-	// temp := ""
-	// row.Scan(&temp)
-
-	// fmt.Println(temp)
-
-	// if temp != "" {
-	// 	fmt.Println(temp)
-	// 	return true
-	// }
-
-	// return false
-
-	// if results != nil {
-	// 	fmt.Println("Usuario ja existe")
-	// 	return "sim"
-	// } else {
-	// 	return "nao"
-	// }
-	
-	// return "nada"
+	return false	
 }

@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"fmt"
+	// "fmt"
 	"io"
 	"encoding/json"
 	"net/http"
 	// "golang/database"
-	// "golang/data"
+	"golang/data"
 	"golang/utils"
 )
 
@@ -37,16 +37,15 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 		return
 	} 
 
-	fmt.Println(p.Nome, p.Senha)
-	fmt.Println(utils.FindUser(p.Nome, p.Senha))
+	// fmt.Println(p.Nome, p.Senha)
+	// fmt.Println(utils.FindUser(p.Nome, p.Senha))
 
-	// if utils.FindUser(p.Nome, p.Senha) == false {
-	// 	data.RegisterData(p.Nome, p.Senha)
-	// } else {
-	// 	return
-	// }
+	if utils.FindUser(p.Nome, p.Senha) == false {
+		data.RegisterData(p.Nome, p.Senha)
+	} else {
+		return
+	}
 
-	// Verificar se o usuario ja existe | eu poderia ate chamar a propria controller?
 	io.WriteString(w, "prosseguir com o cadastro")
 
 
