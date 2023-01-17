@@ -6,7 +6,8 @@ import (
 	"encoding/json"
 	"net/http"
 	// "golang/database"
-	"golang/data"
+	// "golang/data"
+	"golang/utils"
 )
 
 type Person struct {
@@ -36,7 +37,14 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 		return
 	} 
 
-	data.RegisterData(p.Nome, p.Senha)
+	fmt.Println(p.Nome, p.Senha)
+	fmt.Println(utils.FindUser(p.Nome, p.Senha))
+
+	// if utils.FindUser(p.Nome, p.Senha) == false {
+	// 	data.RegisterData(p.Nome, p.Senha)
+	// } else {
+	// 	return
+	// }
 
 	// Verificar se o usuario ja existe | eu poderia ate chamar a propria controller?
 	io.WriteString(w, "prosseguir com o cadastro")
@@ -47,6 +55,6 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "Person: %+v", p)
 
 	// database.ConnectDb("RegisterUser") // ? 
-	fmt.Printf("got /user request\n")
+	// fmt.Printf("got /user request\n")
 	// io.WriteString(w, "Hello, user!\n")
 }
