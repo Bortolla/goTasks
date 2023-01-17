@@ -6,24 +6,17 @@ import (
 	"net/http"
 	"os"
 	"golang/controllers"
-	// "golang/database"
 )
 
 func main() {
 
-	// database.ConnectDb()
-
-	// http.HandleFunc("/", controllers.GetRoot)
+	http.HandleFunc("/register", controllers.RegisterController)
+	
+	http.HandleFunc("/login", controllers.LoginController)
 
 	// http.HandleFunc("/deleteTask", controllers.DeleteTaskController)
 
 	// http.HandleFunc("/getTasks", controllers.GetTasksController)
-
-	http.HandleFunc("/register", controllers.RegisterController)
-
-	// http.HandleFunc("/login", controllers.LoginController)
-
-	// http.HandleFunc("/user", controllers.GetUserController)
 
 	err := http.ListenAndServe(":3333", nil)
 
