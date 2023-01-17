@@ -17,8 +17,13 @@ type Person struct {
 
 func RegisterController(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		http.Error(w, "Método não suportado.", http.StatusNotFound)
-    return
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(map[string]any{
+			"msg": "erro",
+			"status": "500",
+		})
+		return
 	}
 
 	var p Person
@@ -32,7 +37,7 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 			"status": "500",
 		})
 		return
-  }
+  	}
 
   	if len(p.Nome) == 0 || len(p.Senha) == 0 {
 		// Adicionar JSON com mensagem
