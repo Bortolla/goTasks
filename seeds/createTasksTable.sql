@@ -1,0 +1,8 @@
+USE golang;
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `dono` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`dono`) REFERENCES users(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
