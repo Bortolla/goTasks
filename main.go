@@ -14,7 +14,7 @@ func main() {
 	
 	http.HandleFunc("/login", controllers.LoginController)
 
-	//http.HandleFunc("/createTask", controllers.CreateTask)
+	http.HandleFunc("/createTask", controllers.CreateTaskController)
 
 	// http.HandleFunc("/getTasks", controllers.GetTasksController)
 
