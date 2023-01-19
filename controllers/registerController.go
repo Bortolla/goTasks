@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	// "fmt"
+	"fmt"
 	// "io"
 	"encoding/json"
 	"net/http"
@@ -51,7 +51,7 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 	} else {
 
 		// Caso o usuario nao exista
-		if utils.FindUser(p.Nome, p.Senha) >= 1 {
+		if utils.FindUser(p.Nome, p.Senha) < 1 {
 			// ele eh cadastrado
 			data.RegisterData(p.Nome, p.Senha)
 			w.Header().Set("Content-Type", "application/json")
@@ -60,6 +60,7 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 				"msg": "ok",
 				"status": "201",
 			})
+			fmt.Println("cadastrado")
 			return
 
 		} else {
