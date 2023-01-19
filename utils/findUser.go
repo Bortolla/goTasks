@@ -12,7 +12,7 @@ type User struct {
 	Senha string `json:"senha"`
 }
 
-func FindUser(nome, senha string) (bool) {
+func FindUser(nome, senha string) (int) {
 	db, err := sql.Open("mysql", "root:@/golang")
 
 	if err != nil {
@@ -37,14 +37,14 @@ func FindUser(nome, senha string) (bool) {
 				panic(err.Error())
 			}
 
-			if len(user.Nome) != 0 {
-				return true
+			if user.ID >= 1 {
+				return user.ID
 			} else {
-				return false
+				return 0
 			}
 		}
 		
 	}
 
-	return false	
+	return 0	
 }

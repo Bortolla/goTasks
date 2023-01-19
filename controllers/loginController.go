@@ -33,7 +33,8 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
   	}
 
 	// Caso o usuario nao exista
-	if utils.FindUser(p.Nome, p.Senha) == false {
+	var usuarioId = utils.FindUser(p.Nome, p.Senha)
+	if usuarioId < 1 {
 		// ele nao pode fzr login
 		data.RegisterData(p.Nome, p.Senha)
 		w.Header().Set("Content-Type", "application/json")
@@ -51,6 +52,7 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "ok",
 			"status": "200",
+			"usuarioId": usuarioId, 
 		})
 		return
 	}

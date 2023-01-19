@@ -1,5 +1,6 @@
 package controllers
 
+/*
 import (
 	"encoding/json"
 	"net/http"
@@ -49,7 +50,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
+*/
 
 
 

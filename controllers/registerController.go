@@ -51,7 +51,7 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 	} else {
 
 		// Caso o usuario nao exista
-		if utils.FindUser(p.Nome, p.Senha) == false {
+		if utils.FindUser(p.Nome, p.Senha) >= 1 {
 			// ele eh cadastrado
 			data.RegisterData(p.Nome, p.Senha)
 			w.Header().Set("Content-Type", "application/json")
