@@ -21,7 +21,7 @@ func CreateTaskData(nomeTarefa string, usuarioId int) (bool) {
 		fmt.Println("Banco de dados conectado com sucesso")
 		defer db.Close()
 
-		var sql string = fmt.Sprintf("INSERT INTO `tasks` (nome, dono) VALUES('%s', '%s')", nomeTarefa, usuarioId)
+		var sql string = fmt.Sprintf("INSERT INTO `tasks` (nome, dono) VALUES('%s', '%d')", nomeTarefa, usuarioId)
 
 		results, err := db.Query(sql)
 
