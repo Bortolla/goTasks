@@ -1,14 +1,19 @@
 package controllers
-/*
+
 import (
+	"fmt"
 	"encoding/json"
 	"net/http"
 	"golang/data"
-	"golang/utils"
+	//"golang/utils"
 )
 
+type Task struct {
+	UsuarioId int
+	NomeTarefa string
+}
 
-func LoginController(w http.ResponseWriter, r *http.Request) {
+func CreateTaskController(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
@@ -16,12 +21,13 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 			"msg": "erro",
 			"status": "500",
 		})
+		fmt.Println("Erro no método - createTaskController")
 		return
 	}
 
-	var p Person
+	var t Task
 
-	err := json.NewDecoder(r.Body).Decode(&p)
+	err := json.NewDecoder(r.Body).Decode(&t)
   	if err != nil {
     	w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
@@ -29,32 +35,39 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 			"msg": "erro",
 			"status": "500",
 		})
+		fmt.Println("Erro na decodificação do JSON - createTaskController")
 		return
   	}
 
-	// Caso o usuario nao exista
-	var usuarioId = utils.FindUser(p.Nome, p.Senha)
-	if usuarioId < 1 {
-		// ele nao pode fzr login
-		data.RegisterData(p.Nome, p.Senha)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(401)
-		json.NewEncoder(w).Encode(map[string]any{
-			"msg": "erro",
-			"status": "401",
-		})
-		return
-
-	} else {
-		// usuario existe, entao pode logar
+	if t.UsuarioId < 1 || len(t.NomeTarefa) < 1 {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		json.NewEncoder(w).Encode(map[string]any{
-			"msg": "ok",
-			"status": "200",
-			"usuarioId": usuarioId, 
+			"msg": "erro",
+			"status": "404",
 		})
+		fmt.Println("UsuarioId ou NomeTarefa vazios")
 		return
+	} else {
+		var resultado = data.CreateTaskData(t.NomeTarefa, t.UsuarioId)
+		
+		if resultado == true {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(200)
+			json.NewEncoder(w).Encode(map[string]any{
+				"msg": "ok",
+				"status": "200",
+			})	
+			return
+		} else {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(200)
+			json.NewEncoder(w).Encode(map[string]any{
+				"msg": "erro",
+				"status": "500",
+			})
+			return
+		}
+	
 	}
-
-}*/
+}

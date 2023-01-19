@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"fmt"
+	// "fmt"
 	// "io"
 	"encoding/json"
 	"net/http"
@@ -60,7 +60,6 @@ func RegisterController(w http.ResponseWriter, r *http.Request) {
 				"msg": "ok",
 				"status": "201",
 			})
-			fmt.Println("cadastrado")
 			return
 
 		} else {
