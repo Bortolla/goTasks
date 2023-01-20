@@ -1,16 +1,14 @@
 package controllers
 
-/*
 import (
 	"encoding/json"
 	"net/http"
-	"golang/data"
-	"golang/utils"
+	// "golang/data"
+	// "golang/utils"
 )
 
-type Task struct {
-	NomeUsuario string
-	NomeTarefa string
+type GetTasksResponse struct {
+	UsuarioId int
 }
 
 func GetTasksController(w http.ResponseWriter, r *http.Request) {
@@ -24,20 +22,10 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var t Task
+	var t GetTasksResponse
 
 	err := json.NewDecoder(r.Body).Decode(&t)
-  	if err != nil {
-    	w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
-		json.NewEncoder(w).Encode(map[string]any{
-			"msg": "erro",
-			"status": "500",
-		})
-		return
-  	}
-
-	if len(t.NomeTarefa) == 0 {
+  if err != nil {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(map[string]any{
@@ -45,15 +33,26 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 			"status": "500",
 		})
 		return
+  }
+
+	if t.UsuarioId < 1 {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(map[string]any{
+			"msg": "erro",
+			"status": "404",
+		})
+		return
 	} else {
 		// Buscar a tarefa referente aquele usuario
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(500)
+		json.NewEncoder(w).Encode(map[string]any{
+			"msg": "ok",
+			"status": "200",
+			"usuarioId": t.UsuarioId,
+		})
+		return
 	}
 
 }
-*/
-
-
-
-
-
-

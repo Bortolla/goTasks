@@ -28,8 +28,8 @@ func CreateTaskController(w http.ResponseWriter, r *http.Request) {
 	var t Task
 
 	err := json.NewDecoder(r.Body).Decode(&t)
-  	if err != nil {
-    	w.Header().Set("Content-Type", "application/json")
+  if err != nil {
+    w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "erro",
@@ -37,7 +37,7 @@ func CreateTaskController(w http.ResponseWriter, r *http.Request) {
 		})
 		fmt.Println("Erro na decodificação do JSON - createTaskController")
 		return
-  	}
+  }
 
 	if t.UsuarioId < 1 || len(t.NomeTarefa) < 1 {
 		w.Header().Set("Content-Type", "application/json")

@@ -18,7 +18,7 @@ func main() {
 
 	http.HandleFunc("/deleteTask", controllers.DeleteTaskController)
 
-	// http.HandleFunc("/getTasks", controllers.GetTasksController)
+	http.HandleFunc("/getTasks", controllers.GetTasksController)
 
 	err := http.ListenAndServe(":3333", nil)
 
