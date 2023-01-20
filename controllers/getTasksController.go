@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
-	// "golang/data"
+	"golang/data"
 	// "golang/utils"
 )
 
@@ -25,7 +25,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 	var t GetTasksResponse
 
 	err := json.NewDecoder(r.Body).Decode(&t)
-  if err != nil {
+  	if err != nil {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(map[string]any{
@@ -33,7 +33,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 			"status": "500",
 		})
 		return
-  }
+  	}
 
 	if t.UsuarioId < 1 {
 		w.Header().Set("Content-Type", "application/json")
@@ -45,6 +45,9 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 		return
 	} else {
 		// Buscar a tarefa referente aquele usuario
+		data.GetTasksData(t.UsuarioId)
+		
+		/*
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(map[string]any{
@@ -53,6 +56,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 			"usuarioId": t.UsuarioId,
 		})
 		return
+		*/
 	}
 
 }
