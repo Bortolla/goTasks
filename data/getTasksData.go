@@ -13,7 +13,7 @@ type Task struct {
 
 func GetTasksData(usuarioId int) ([]string) {
 	array := make([]string, 0)
-	db, err := sql.Open("mysql", "root:@/golang")
+	db, err := sql.Open("mysql", "root:root@/golang")
 
 	if err != nil {
 		panic(err.Error())

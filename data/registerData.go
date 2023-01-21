@@ -14,7 +14,7 @@ type Tag struct {
 }
 
 func RegisterData(nome, senha string)  {
-	db, err := sql.Open("mysql", "root:@/golang")
+	db, err := sql.Open("mysql", "root:root@/golang")
 
 	if err != nil {
 		panic(err.Error())

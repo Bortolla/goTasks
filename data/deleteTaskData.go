@@ -7,7 +7,7 @@ import (
 )
 
 func DeleteTaskData(nomeTarefa string, usuarioId int) (bool) {
-	db, err := sql.Open("mysql", "root:@/golang")
+	db, err := sql.Open("mysql", "root:root@/golang")
 
 	if err != nil {
 		panic(err.Error())

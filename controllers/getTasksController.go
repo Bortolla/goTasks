@@ -14,7 +14,7 @@ type GetTasksResponse struct {
 
 func GetTasksController(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-    w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+  w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	if r.Method != "POST" {
 		w.Header().Set("Content-Type", "application/json")
