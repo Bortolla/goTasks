@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	// "fmt"
 	"encoding/json"
 	"net/http"
 	"golang/data"
@@ -48,18 +49,18 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 		return
 	} else {
 		// Buscar a tarefa referente aquele usuario
-		data.GetTasksData(t.UsuarioId)
-		
-		/*
+		var resultado = data.GetTasksData(t.UsuarioId)
+		// fmt.Println(len(resultado))
+		// fmt.Println(resultado)
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "ok",
 			"status": "200",
-			"usuarioId": t.UsuarioId,
+			"usuarioId": resultado,
 		})
 		return
-		*/
 	}
 
 }

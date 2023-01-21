@@ -11,7 +11,8 @@ type Task struct {
 	Nome string `json:"nome"`
 }
 
-func GetTasksData(usuarioId int) {
+func GetTasksData(usuarioId int) ([]string) {
+	array := make([]string, 0)
 	db, err := sql.Open("mysql", "root:@/golang")
 
 	if err != nil {
@@ -26,10 +27,8 @@ func GetTasksData(usuarioId int) {
 
 		if err != nil {
 			fmt.Println("erro")		
-			return
+			return array
 		}
-
-		//fmt.Println(results)
 
 		for results.Next() {
 			var task Task
@@ -40,13 +39,9 @@ func GetTasksData(usuarioId int) {
 				panic(err.Error())
 			}
 
-			fmt.Println(task.Nome)
-
+			array = append(array, task.Nome)
 		}
-	
-		//fmt.Println(results)
-		return 
+		return array
 	}
-	return
-	
+	return array
 }
