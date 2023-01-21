@@ -54,7 +54,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 		// fmt.Println(resultado)
 
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(500)
+		w.WriteHeader(200)
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "ok",
 			"status": "200",

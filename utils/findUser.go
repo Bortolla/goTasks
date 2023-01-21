@@ -13,7 +13,7 @@ type User struct {
 }
 
 func FindUser(nome, senha string) (int) {
-	db, err := sql.Open("mysql", "root:@/golang")
+	db, err := sql.Open("mysql", "root:root@/golang")
 
 	if err != nil {
 		panic(err.Error())

@@ -44,7 +44,7 @@ func CreateTaskController(w http.ResponseWriter, r *http.Request) {
 
 	if t.UsuarioId < 1 || len(t.NomeTarefa) < 1 {
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
+		w.WriteHeader(404)
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "erro",
 			"status": "404",
@@ -64,7 +64,7 @@ func CreateTaskController(w http.ResponseWriter, r *http.Request) {
 			return
 		} else {
 			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(200)
+			w.WriteHeader(500)
 			json.NewEncoder(w).Encode(map[string]any{
 				"msg": "erro",
 				"status": "500",

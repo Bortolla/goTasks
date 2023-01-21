@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
-	"golang/data"
+	// "golang/data"
 	"golang/utils"
 )
 
@@ -39,7 +39,6 @@ func LoginController(w http.ResponseWriter, r *http.Request) {
 	var usuarioId = utils.FindUser(p.Nome, p.Senha)
 	if usuarioId < 1 {
 		// ele nao pode fzr login
-		data.RegisterData(p.Nome, p.Senha)
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
 		json.NewEncoder(w).Encode(map[string]any{
