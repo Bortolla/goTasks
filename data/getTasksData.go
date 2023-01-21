@@ -2,15 +2,13 @@ package data
 
 import (
 	"fmt"
-	"log"
+	// "log"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 type Task struct {
-	ID   int    `json:"id"`
 	Nome string `json:"nome"`
-	Dono string `json:"dono"`
 }
 
 func GetTasksData(usuarioId int) {
@@ -36,14 +34,13 @@ func GetTasksData(usuarioId int) {
 		for results.Next() {
 			var task Task
 
-			err = results.Scan(&task.ID, &task.Nome, &task.Dono)
+			err = results.Scan(&task.Nome)
 
 			if err != nil {
 				panic(err.Error())
 			}
 
-			log.Println(task.Nome)
-			log.Println(task.Dono)
+			fmt.Println(task.Nome)
 
 		}
 	
