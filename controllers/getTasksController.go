@@ -58,7 +58,7 @@ func GetTasksController(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]any{
 			"msg": "ok",
 			"status": "200",
-			"usuarioId": resultado,
+			"tasks": resultado,
 		})
 		return
 	}
